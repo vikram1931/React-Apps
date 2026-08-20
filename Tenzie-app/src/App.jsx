@@ -4,7 +4,7 @@ import Die from "./Die";
 function generateAllNewDice() {
   let randomNum = new Array(10)
     .fill(0)
-    .map((ele) => Math.ceil(Math.random() * 6));
+    .map((ele) => ({ value: Math.ceil(Math.random() * 6), isHeld: false }));
 
   return randomNum;
 }
@@ -25,7 +25,7 @@ export default function App() {
 
   const diceElements = () => {
     return dice.map((dieNum, i) => {
-      return <Die key={i} dieNum={dieNum} />;
+      return <Die key={i} dieNum={dieNum.value} />;
     });
   };
 
