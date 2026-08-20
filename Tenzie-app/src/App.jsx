@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Die from "./Die";
 import { nanoid } from "nanoid";
 import confetti from "canvas-confetti";
@@ -14,6 +14,11 @@ function generateAllNewDice() {
 
 export default function App() {
   const [dice, setDice] = useState(generateAllNewDice());
+  const buttonRef = useRef(null); // useRef is useful for accessing DOMNode property, eg:focus
+
+  //console.log(buttonRef); // we find list of attributes like onfocus, onblur etc
+
+  // we need to use useEffect()  to get the external stuff
 
   /* Another approach
     
@@ -29,6 +34,12 @@ export default function App() {
   const allHeld = dice.every((obj) => obj.isHeld);
   const allSameValue = dice.every((obj) => obj.value === dice[0].value);
   const gameWon = allHeld && allSameValue;
+
+  useEffect(() => {
+    if (gameWon && buttonRef.current) {
+      buttonRef.current.focus();
+    }
+  }, [gameWon]);
 
   gameWon && confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
 
@@ -88,11 +99,10 @@ export default function App() {
       <div className="dice-container">{diceElements()}</div>
 
       <button
+        ref={buttonRef}
         className="roll-dice"
         type="button"
-        onClick={() => {
-          rollDice();
-        }}>
+        onClick={rollDice}>
         {gameWon ? "New Game" : "Roll"}
       </button>
     </main>
