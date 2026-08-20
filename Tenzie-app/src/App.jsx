@@ -49,6 +49,20 @@ export default function App() {
     );
   };
 
+  const gameWon = () => {
+    const allHeld = dice.every((obj) => obj.isHeld);
+    const allSameValue = dice.every((obj) => obj.value === dice[0].value);
+
+    if (allHeld && allSameValue) {
+      console.log("GAME WON");
+    }
+    if (allHeld && !allSameValue) {
+      console.log("NO WIN....GAME OVER");
+    }
+  };
+
+  gameWon();
+
   function hold(id) {
     setDice((oldDice) =>
       oldDice.map((die) =>
