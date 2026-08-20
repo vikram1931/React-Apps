@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import Die from "./Die";
+
+function generateAllNewDice() {
+  let randomNum = new Array(10)
+    .fill(0)
+    .map((ele) => Math.ceil(Math.random() * 6));
+
+  return randomNum;
+}
+
 export default function App() {
   const [dice, setDice] = useState(generateAllNewDice());
 
-  const generateAllNewDice = () => {
-    let randomNum = new Array(10)
-      .fill(0)
-      .map((ele) => Math.ceil(Math.random() * 6));
-
-    return randomNum;
-    /* Another approach
+  /* Another approach
     
     let newDice = []
 
@@ -19,13 +22,16 @@ export default function App() {
     }
     return newDice
     */
+
+  const diceElements = () => {
+    return dice.map((dieNum, i) => {
+      return <Die key={i} dieNum={dieNum} />;
+    });
   };
 
   return (
     <main>
-      <div className="dice-container">
-        <Die />
-      </div>
+      <div className="dice-container">{diceElements()}</div>
     </main>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Die() {
-  return <button type="button"> </button>;
+export default function Die({ dieNum }) {
+  return <button type="button">{dieNum} </button>;
 }
