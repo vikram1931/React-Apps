@@ -40,7 +40,13 @@ export default function App() {
   };
 
   const rollDice = () => {
-    setDice(generateAllNewDice());
+    //  setDice(generateAllNewDice());
+
+    setDice((oldDice) =>
+      oldDice.map((die) =>
+        die.isHeld ? die : { ...die, value: Math.ceil(Math.random() * 6) },
+      ),
+    );
   };
 
   function hold(id) {
