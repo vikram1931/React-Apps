@@ -13,7 +13,7 @@ function generateAllNewDice() {
 
 export default function App() {
   const [dice, setDice] = useState(generateAllNewDice());
-  console.log(nanoid);
+
   /* Another approach
     
     let newDice = []
@@ -49,19 +49,11 @@ export default function App() {
     );
   };
 
-  const gameWon = () => {
-    const allHeld = dice.every((obj) => obj.isHeld);
-    const allSameValue = dice.every((obj) => obj.value === dice[0].value);
+  const allHeld = dice.every((obj) => obj.isHeld);
+  const allSameValue = dice.every((obj) => obj.value === dice[0].value);
 
-    if (allHeld && allSameValue) {
-      console.log("GAME WON");
-    }
-    if (allHeld && !allSameValue) {
-      console.log("NO WIN....GAME OVER");
-    }
-  };
-
-  gameWon();
+  const gameWon = allHeld && allSameValue;
+  const gameOver = allHeld && !allSameValue;
 
   function hold(id) {
     setDice((oldDice) =>
@@ -75,7 +67,7 @@ export default function App() {
     <main>
       <div className="dice-container">{diceElements()}</div>
       <button className="roll-dice" type="button" onClick={rollDice}>
-        Roll
+        {gameWon || gameOver ? "New Game" : "Roll"}
       </button>
     </main>
   );
