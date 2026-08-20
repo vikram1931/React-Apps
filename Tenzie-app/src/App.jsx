@@ -29,9 +29,16 @@ export default function App() {
     });
   };
 
+  const rollDice = () => {
+    setDice(generateAllNewDice());
+  };
+
   return (
     <main>
       <div className="dice-container">{diceElements()}</div>
+      <button className="roll-dice" type="button" onClick={rollDice}>
+        Roll
+      </button>
     </main>
   );
 }
