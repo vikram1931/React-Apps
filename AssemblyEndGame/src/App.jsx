@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import languages from "./languages";
 export default function AssemblyEndgame() {
   const [currentWord, setCurrentword] = useState("react");
-  const [hold, setHold] = useState([]);
-  console.log(hold);
+  const [holdGuessLetter, setHoldGuessLetter] = useState([]);
+
   const alphabets = "abcdefghijklmnopqrstuvwxyz";
 
   const alphabetsButton = alphabets
@@ -22,9 +22,38 @@ export default function AssemblyEndgame() {
     });
 
   function handleLetterClick(letter) {
-    setHold((oldHold) => [...oldHold, letter]);
-  }
+    // APPROACH 1:
+    setHoldGuessLetter((oldGuessLetter) =>
+      oldGuessLetter.includes(letter)
+        ? oldGuessLetter
+        : [...oldGuessLetter, letter],
+    );
 
+    /*  
+APPROACH 2: 
+    if (!holdGuessLetter.includes(letter)) {
+      setHoldGuessLetter([...holdGuessLetter, letter]);
+    }
+    return [...holdGuessLetter]; */
+
+    /*APPROACH 3:    set returns an object, so need to spread it in an array, 
+    or we can use array.from to convert from object to array
+
+    setHoldGuessLetter(() => {
+      let allHoldletters = [...holdGuessLetter, letter];
+      let noduplicateLetters = [...new Set(allHoldletters)];
+      return noduplicateLetters;
+    });*/
+
+    // APPROACH 4    ...approach 3 and 4 are rerendering
+    /*
+    setHoldGuessLetter((prevLetter) => {
+      const lettersSet = new Set(prevLetter);
+      lettersSet.add(letter);
+      return Array.from(lettersSet);
+    });*/
+  }
+  console.log(holdGuessLetter);
   const word = currentWord
     .toUpperCase()
     .split("")
