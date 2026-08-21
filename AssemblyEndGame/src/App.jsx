@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import languages from "./languages";
 export default function AssemblyEndgame() {
+  const [currentWord, setCurrentword] = useState("react");
+
+  const word = currentWord
+    .toUpperCase()
+    .split("")
+    .map((ele, i) => {
+      return (
+        <span key={i} className="wordspan">
+          {ele}
+        </span>
+      );
+    });
   return (
     <main>
       <header>
@@ -30,6 +42,7 @@ export default function AssemblyEndgame() {
           );
         })}
       </section>
+      <section className="word">{word}</section>
     </main>
   );
 }

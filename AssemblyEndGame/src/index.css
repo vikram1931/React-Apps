@@ -70,9 +70,25 @@ section.game-status > h2 {
   flex-wrap: wrap;
   gap: 10px;
   padding: 10px;
+  justify-content: center;
 }
 .language {
   padding: 10px 20px;
   border-radius: 5px;
   font-weight: bold;
+}
+
+.word {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  justify-content: center;
+  margin: 20px;
+}
+.wordspan {
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: dimgray;
+  border-bottom: 2px solid;
 }
