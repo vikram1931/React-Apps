@@ -1,21 +1,29 @@
 import React, { useState } from "react";
+import clsx from "clsx";
 import languages from "./languages";
 export default function AssemblyEndgame() {
   const [currentWord, setCurrentword] = useState("react");
   const [holdGuessLetter, setHoldGuessLetter] = useState([]);
 
   const alphabets = "abcdefghijklmnopqrstuvwxyz";
+  //className={clsx(state && 'bg-red-500 hover:bg-red-600')}
 
   const alphabetsButton = alphabets
     .toUpperCase()
     .split("")
     .map((letter, i) => {
+      const isGuessed = holdGuessLetter.includes(letter);
+      const isCorrect = isGuessed && currentWord.toUpperCase().includes(letter);
+      const isWrong = isGuessed && !currentWord.toUpperCase().includes(letter);
+
+      const className = clsx({ correct: isCorrect, wrong: isWrong });
+
       return (
         <button
+          className={className}
           onClick={() => handleLetterClick(letter)}
           type="button"
-          key={i}
-          className="alphabutton">
+          key={i}>
           {letter}
         </button>
       );

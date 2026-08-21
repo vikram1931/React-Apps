@@ -99,7 +99,7 @@ section.sectionalphabet {
   margin: 40px;
   gap: 3px;
 }
-button.alphabutton {
+section.sectionalphabet > button {
   background-color: #fcba29;
   border-radius: 5px;
   height: 35px;
@@ -118,4 +118,11 @@ button.new-game {
   display: block;
   margin-inline: auto;
   cursor: pointer;
+}
+section.sectionalphabet > button.correct {
+  background-color: #10a95b;
+}
+
+section.sectionalphabet > button.wrong {
+  background-color: #ec5d49;
 }
