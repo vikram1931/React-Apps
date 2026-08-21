@@ -64,3 +64,15 @@ section.game-status > h2 {
   font-size: 1.25 rem;
   margin: 5px;
 }
+
+.languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+}
+.language {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
