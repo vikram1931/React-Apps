@@ -92,3 +92,16 @@ section.game-status > h2 {
   background-color: dimgray;
   border-bottom: 2px solid;
 }
+section.sectionalphabet {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px;
+  gap: 3px;
+}
+button.alphabutton {
+  background-color: gold;
+  border-radius: 5px;
+  padding: 8px;
+  font-weight: bold;
+}

@@ -3,6 +3,19 @@ import languages from "./languages";
 export default function AssemblyEndgame() {
   const [currentWord, setCurrentword] = useState("react");
 
+  const alphabets = "abcdefghijklmnopqrstuvwxyz";
+
+  const alphabetsButton = alphabets
+    .toUpperCase()
+    .split("")
+    .map((letter, i) => {
+      return (
+        <button type="button" key={i} className="alphabutton">
+          {letter}
+        </button>
+      );
+    });
+
   const word = currentWord
     .toUpperCase()
     .split("")
@@ -43,6 +56,7 @@ export default function AssemblyEndgame() {
         })}
       </section>
       <section className="word">{word}</section>
+      <section className="sectionalphabet">{alphabetsButton}</section>
     </main>
   );
 }
