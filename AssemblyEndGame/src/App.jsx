@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import languages from "./languages";
 export default function AssemblyEndgame() {
   const [currentWord, setCurrentword] = useState("react");
-
+  const [hold, setHold] = useState([]);
+  console.log(hold);
   const alphabets = "abcdefghijklmnopqrstuvwxyz";
 
   const alphabetsButton = alphabets
@@ -10,11 +11,19 @@ export default function AssemblyEndgame() {
     .split("")
     .map((letter, i) => {
       return (
-        <button type="button" key={i} className="alphabutton">
+        <button
+          onClick={() => handleLetterClick(letter)}
+          type="button"
+          key={i}
+          className="alphabutton">
           {letter}
         </button>
       );
     });
+
+  function handleLetterClick(letter) {
+    setHold((oldHold) => [...oldHold, letter]);
+  }
 
   const word = currentWord
     .toUpperCase()
