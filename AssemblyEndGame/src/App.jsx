@@ -7,8 +7,7 @@ export default function AssemblyEndgame() {
 
   const wrongGuessCount = holdGuessLetter.filter(
     (letter) => !currentWord.includes(letter),
-  );
-  console.log(wrongGuessCount);
+  ).length;
 
   const alphabets = "abcdefghijklmnopqrstuvwxyz";
   //className={clsx(state && 'bg-red-500 hover:bg-red-600')}
@@ -88,10 +87,12 @@ APPROACH 2:
       </section>
       <section className="languages">
         {languages.map((language, index) => {
+          console.log(wrongGuessCount);
+          const isLanguageLost = index < wrongGuessCount;
           return (
             <div
               key={index}
-              className="language"
+              className={`language ${isLanguageLost ? "lost" : ""}`}
               style={{
                 backgroundColor: language.backgroundColor,
                 color: language.color,
