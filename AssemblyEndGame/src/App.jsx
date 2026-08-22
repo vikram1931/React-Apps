@@ -5,6 +5,11 @@ export default function AssemblyEndgame() {
   const [currentWord, setCurrentword] = useState("react");
   const [holdGuessLetter, setHoldGuessLetter] = useState([]);
 
+  const wrongGuessCount = holdGuessLetter.filter((letter) => {
+    return !currentWord.toUpperCase().includes(letter);
+  });
+
+  console.log(wrongGuessCount.length);
   const alphabets = "abcdefghijklmnopqrstuvwxyz";
   //className={clsx(state && 'bg-red-500 hover:bg-red-600')}
 
