@@ -9,6 +9,19 @@ export default function AssemblyEndgame() {
     (letter) => !currentWord.includes(letter),
   ).length;
 
+  //conditional rendering of button
+
+  const GameWon = currentWord
+    .split("")
+    .every((letter) => holdGuessLetter.includes(letter));
+  const GameLost = wrongGuessCount === languages.length - 1;
+  let isGameOver = GameWon || GameLost;
+  let NewGameButton = isGameOver && (
+    <button type="button" className="new-game">
+      New Game
+    </button>
+  );
+
   const alphabets = "abcdefghijklmnopqrstuvwxyz";
   //className={clsx(state && 'bg-red-500 hover:bg-red-600')}
 
@@ -104,9 +117,7 @@ APPROACH 2:
       </section>
       <section className="word">{word}</section>
       <section className="sectionalphabet">{alphabetsButton}</section>
-      <button type="button" className="new-game">
-        New Game
-      </button>
+      {NewGameButton}
     </main>
   );
 }
