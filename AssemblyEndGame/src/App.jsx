@@ -65,10 +65,10 @@ APPROACH 2:
   const word = currentWord
     .toUpperCase()
     .split("")
-    .map((ele, i) => {
+    .map((letter, i) => {
       return (
         <span key={i} className="wordspan">
-          {ele}
+          {holdGuessLetter.includes(letter) ? letter : ""}
         </span>
       );
     });
