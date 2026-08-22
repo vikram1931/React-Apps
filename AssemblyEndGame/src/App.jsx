@@ -5,34 +5,13 @@ export default function AssemblyEndgame() {
   const [currentWord, setCurrentword] = useState("react");
   const [holdGuessLetter, setHoldGuessLetter] = useState([]);
 
-  const wrongGuessCount = holdGuessLetter.filter((letter) => {
-    return !currentWord.toUpperCase().includes(letter);
-  });
+  const wrongGuessCount = holdGuessLetter.filter(
+    (letter) => !currentWord.includes(letter),
+  );
+  console.log(wrongGuessCount);
 
-  console.log(wrongGuessCount.length);
   const alphabets = "abcdefghijklmnopqrstuvwxyz";
   //className={clsx(state && 'bg-red-500 hover:bg-red-600')}
-
-  const alphabetsButton = alphabets
-    .toUpperCase()
-    .split("")
-    .map((letter, i) => {
-      const isGuessed = holdGuessLetter.includes(letter);
-      const isCorrect = isGuessed && currentWord.toUpperCase().includes(letter);
-      const isWrong = isGuessed && !currentWord.toUpperCase().includes(letter);
-
-      const className = clsx({ correct: isCorrect, wrong: isWrong });
-
-      return (
-        <button
-          className={className}
-          onClick={() => handleLetterClick(letter)}
-          type="button"
-          key={i}>
-          {letter}
-        </button>
-      );
-    });
 
   function handleLetterClick(letter) {
     // APPROACH 1:
@@ -66,17 +45,33 @@ APPROACH 2:
       return Array.from(lettersSet);
     });*/
   }
-  console.log(holdGuessLetter);
-  const word = currentWord
-    .toUpperCase()
-    .split("")
-    .map((letter, i) => {
-      return (
-        <span key={i} className="wordspan">
-          {holdGuessLetter.includes(letter) ? letter : ""}
-        </span>
-      );
-    });
+
+  const word = currentWord.split("").map((letter, i) => {
+    return (
+      <span key={i} className="wordspan">
+        {holdGuessLetter.includes(letter) ? letter.toUpperCase() : ""}
+      </span>
+    );
+  });
+
+  const alphabetsButton = alphabets.split("").map((letter, i) => {
+    const isGuessed = holdGuessLetter.includes(letter);
+    const isCorrect = isGuessed && currentWord.includes(letter);
+    const isWrong = isGuessed && !currentWord.includes(letter);
+
+    const className = clsx({ correct: isCorrect, wrong: isWrong });
+
+    return (
+      <button
+        className={className}
+        onClick={() => handleLetterClick(letter)}
+        type="button"
+        key={i}>
+        {letter.toUpperCase()}
+      </button>
+    );
+  });
+
   return (
     <main>
       <header>
