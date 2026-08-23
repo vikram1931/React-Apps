@@ -156,9 +156,15 @@ APPROACH 2:
         {!isGameOver
           ? word
           : currentWord.split("").map((letter, index) => {
+              const letterClassName = clsx(
+                "wordspan",
+                GameLost &&
+                  !holdGuessLetter.includes(letter) &&
+                  "missed-letter",
+              );
               return (
-                <span key={index} className="wordspan">
-                  {letter}
+                <span key={index} className={letterClassName}>
+                  {letter.toUpperCase()}
                 </span>
               );
             })}

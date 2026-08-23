@@ -129,6 +129,9 @@ section.game-status > p.farewell-message {
   background-color: dimgray;
   border-bottom: 2px solid;
 }
+section.word > span.missed-letter {
+  color: #ec5d49;
+}
 section.sectionalphabet {
   display: flex;
   flex-wrap: wrap;
