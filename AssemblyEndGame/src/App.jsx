@@ -97,6 +97,7 @@ APPROACH 2:
     <>
       <h2>you win</h2>
       <p>Well done !🎉</p>
+      {GameWon && confetti()};
     </>
   );
 
@@ -120,9 +121,6 @@ APPROACH 2:
     "game-status-green": GameWon,
     "game-status-red": GameLost,
   });
-
-  /* confetti applied here*/
-  GameWon && confetti();
 
   return (
     <main>
