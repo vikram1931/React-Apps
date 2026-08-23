@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import languages from "./languages";
 import { getFarewellText, getRandomWords } from "./utils";
+import confetti from "canvas-confetti";
 export default function AssemblyEndgame() {
   const [currentWord, setCurrentword] = useState(getRandomWords);
   const [holdGuessLetter, setHoldGuessLetter] = useState([]);
@@ -119,6 +120,9 @@ APPROACH 2:
     "game-status-green": GameWon,
     "game-status-red": GameLost,
   });
+
+  /* confetti applied here*/
+  GameWon && confetti();
 
   return (
     <main>
