@@ -108,7 +108,11 @@ APPROACH 2:
   const fareWellText = languages.map((language, index) => {
     const isLanguageLost = index === wrongGuessCount - 1;
     return (
-      isLanguageLost && <h2 key={index}>{getFarewellText(language.name)}</h2>
+      isLanguageLost && (
+        <p className="farewell-message" key={index}>
+          {getFarewellText(language.name)}
+        </p>
+      )
     );
   });
   const winLoseColor = clsx("game-status", {
@@ -148,7 +152,17 @@ APPROACH 2:
           );
         })}
       </section>
-      <section className="word">{word}</section>
+      <section className="word">
+        {!isGameOver
+          ? word
+          : currentWord.split("").map((letter, index) => {
+              return (
+                <span key={index} className="wordspan">
+                  {letter}
+                </span>
+              );
+            })}
+      </section>
       <section className="sectionalphabet">{alphabetsButton}</section>
       {NewGameButton}
     </main>

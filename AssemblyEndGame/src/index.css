@@ -52,15 +52,15 @@ main {
 section.game-status {
   background-color: chocolate;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   color: #f9f4da;
-  border-radius: 4px;
-  margin-block: 30px;
   width: 100%;
   max-width: 350px;
+  min-height: 60px;
+  border-radius: 4px;
+  margin-block: 30px;
 }
 
 section.game-status.game-status-green {
@@ -77,6 +77,10 @@ section.game-status > p {
 section.game-status > h2 {
   font-size: 1.25 rem;
   margin: 5px;
+}
+section.game-status > p.farewell-message {
+  font-style: italic;
+  font-weight: 400;
 }
 
 .languages {
