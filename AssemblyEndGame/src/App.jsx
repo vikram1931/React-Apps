@@ -18,11 +18,14 @@ export default function AssemblyEndgame() {
   const GameLost = wrongGuessCount >= languages.length - 1;
   let isGameOver = GameWon || GameLost;
   let NewGameButton = isGameOver && (
-    <button type="button" className="new-game">
+    <button onClick={() => handleNewGame()} type="button" className="new-game">
       New Game
     </button>
   );
-
+  const handleNewGame = () => {
+    setCurrentword(getRandomWords);
+    setHoldGuessLetter([]);
+  };
   const alphabets = "abcdefghijklmnopqrstuvwxyz";
   //className={clsx(state && 'bg-red-500 hover:bg-red-600')}
 
