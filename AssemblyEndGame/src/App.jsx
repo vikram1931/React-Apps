@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import languages from "./languages";
+import { getFarewellText } from "./utils";
 export default function AssemblyEndgame() {
   const [currentWord, setCurrentword] = useState("react");
   const [holdGuessLetter, setHoldGuessLetter] = useState([]);
@@ -14,7 +15,7 @@ export default function AssemblyEndgame() {
   const GameWon = currentWord
     .split("")
     .every((letter) => holdGuessLetter.includes(letter));
-  const GameLost = wrongGuessCount === languages.length - 1;
+  const GameLost = wrongGuessCount >= languages.length - 1;
   let isGameOver = GameWon || GameLost;
   let NewGameButton = isGameOver && (
     <button type="button" className="new-game">
@@ -75,6 +76,7 @@ APPROACH 2:
 
     return (
       <button
+        disabled={isGameOver}
         className={className}
         onClick={() => handleLetterClick(letter)}
         type="button"
@@ -82,6 +84,32 @@ APPROACH 2:
         {letter.toUpperCase()}
       </button>
     );
+  });
+
+  //const initialMessage = <h2>Begin the game</h2>;
+
+  const winMessage = GameWon && (
+    <>
+      <h2>you win</h2>
+      <p>Well done !🎉</p>
+    </>
+  );
+
+  const lostMessage = GameLost && (
+    <>
+      <h2>you lose!</h2> <p>Better luck!</p>
+    </>
+  );
+
+  const fareWellText = languages.map((language, index) => {
+    const isLanguageLost = index === wrongGuessCount - 1;
+    return (
+      isLanguageLost && <h2 key={index}>{getFarewellText(language.name)}</h2>
+    );
+  });
+  const winLoseColor = clsx("game-status", {
+    "game-status-green": GameWon,
+    "game-status-red": GameLost,
   });
 
   return (
@@ -94,14 +122,15 @@ APPROACH 2:
           from Assembly!{" "}
         </p>
       </header>
-      <section className="game-status">
-        <h2>you win</h2>
-        <p>Well done !🎉</p>
+      <section className={winLoseColor}>
+        {GameWon && winMessage}
+        {GameLost && lostMessage}
+        {!GameWon && !GameLost && fareWellText}
       </section>
       <section className="languages">
         {languages.map((language, index) => {
-          console.log(wrongGuessCount);
           const isLanguageLost = index < wrongGuessCount;
+
           return (
             <div
               key={index}
