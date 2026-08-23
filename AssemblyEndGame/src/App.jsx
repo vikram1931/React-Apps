@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import languages from "./languages";
-import { getFarewellText } from "./utils";
+import { getFarewellText, getRandomWords } from "./utils";
 export default function AssemblyEndgame() {
-  const [currentWord, setCurrentword] = useState("react");
+  const [currentWord, setCurrentword] = useState(getRandomWords);
   const [holdGuessLetter, setHoldGuessLetter] = useState([]);
 
   const wrongGuessCount = holdGuessLetter.filter(
@@ -77,6 +77,7 @@ APPROACH 2:
     return (
       <button
         disabled={isGameOver}
+        aria-disabled={isGameOver}
         className={className}
         onClick={() => handleLetterClick(letter)}
         type="button"
