@@ -1,29 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import About from "./pages/About";
 import Home from "./pages/Home";
+import About from "./pages/About";
+
 function App() {
   return (
     <BrowserRouter>
-      <main>
-        <header>
-          <h3>#VANLIFE</h3>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-          </nav>
-        </header>
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-        <footer>
-          {" "}
-          <p>Ⓒ 2022 #VANLIFE</p>
-        </footer>
-      </main>
+      <header>
+        <Link className="site-logo" to="/">
+          #VanLife
+        </Link>
+        <nav>
+          <Link to="/about">About</Link>
+        </nav>
+      </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </BrowserRouter>
   );
 }
