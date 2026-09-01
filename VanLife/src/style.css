@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: 548.15px;
+  height: 573.07px;
+  top: 480.14px;
+  left: 327.21px;
+}
+main > header {
+  width: 548.15px;
+  height: 111.62px;
+  top: -0px;
+  background-color: #fff7ed;
+  display: flex;
+  align-items: center;
+
+  /*#FFF7ED */
+}
+
+main > header > h3 {
+  width: 144.51px;
+  height: 41px;
+  position: absolute;
+  left: 26px;
+  font-family: sans-serif;
+  font-weight: 900;
+  font-style: #000000;
+  font-size: 25.35px;
+  line-height: 40.27px;
+  letter-spacing: 0%;
+}
+
+nav > a {
+  text-decoration: none;
+  width: 116.61px;
+  height: 22.92px;
+  top: 45.12px;
+  left: 405.73px;
+  color: #4d4d4d;
+}
+nav a:nth-child(1) {
+  width: 116.61px; /* width from Figma */
+  height: 22.92px; /* height from Figma */
+  position: absolute; /* needed to use top/left positioning */
+  top: 45.12px; /* distance from top of parent */
+  left: 405.73px;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22.92px;
+  letter-spacing: 0%;
+}
+
+nav a:nth-child(2) {
+  width: 51.83px;
+  height: 22.92px;
+  position: absolute;
+  top: 45.12px;
+  left: 470.51px;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22.92px;
+  letter-spacing: 0%;
+}
