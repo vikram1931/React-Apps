@@ -71,3 +71,69 @@ nav a:nth-child(2) {
   line-height: 22.92px;
   letter-spacing: 0%;
 }
+main > footer {
+  width: 548.15px;
+  height: 74.75px;
+  position: absolute;
+  top: 498.32px;
+  background-color: #252525;
+  display: flex;
+  justify-content: center;
+}
+main > footer > p {
+  color: antiquewhite;
+}
+/*
+.bg-image {
+  width: 548.15px;
+  height: 386.7px;
+  position: absolute;
+  top: 111.62px;
+  background-color: #00000075;
+}*/
+
+.imagebackground {
+  background-image: url("./images/vanlifepic.png"); /* your PNG */
+  background-size: cover;
+  background-position: center;
+  height: 400px; /* or whatever size you need */
+  width: 548.15px;
+  position: absolute; /* establishes positioning context */
+}
+.textOverImagebox {
+  width: 494.33px;
+  height: 256.13px;
+  position: relative;
+  top: 90.4px;
+  left: 26.91px;
+  border-radius: 5px;
+}
+.textOne {
+  height: 84px;
+  width: 494.33px;
+  font-family: sans-serif;
+  font-weight: 800;
+  font-size: x-large;
+  line-height: 42px;
+  color: #ffffff;
+}
+.textTwo {
+  height: 60.5px;
+  width: 494.33px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: small;
+  font-family: sans-serif;
+}
+.Findyourvan {
+  width: 494.33px;
+  height: 40px;
+  color: #ffffff;
+  background-color: #ff8c00;
+  font-size: 16px;
+  border-radius: 5px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+}
