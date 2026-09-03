@@ -18,8 +18,11 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="Vans" element={<Vans />} />
-          <Route path="Vans/:id" element={<VanDetail />} />
+          <Route path="Vans">
+            <Route index element={<Vans />} />
+            <Route path=":id" element={<VanDetail />} />
+          </Route>
+
           <Route path="host" element={<HostLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="income" element={<Income />} />
