@@ -19,9 +19,10 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/Vans" element={<Vans />} />
           <Route path="/Vans/:id" element={<VanDetail />} />
-          <Route path="/host" element={<Dashboard />} />
-          <Route path="/host/income" element={<Income />} />
-          <Route path="/host/reviews" element={<Reviews />} />
+          <Route path="/host" element={<Dashboard />}>
+            <Route path="/host/income" element={<Income />} />
+            <Route path="/host/reviews" element={<Reviews />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
