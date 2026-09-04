@@ -1,5 +1,11 @@
 .container {
   border: 5px solid #ffcc5c;
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; by default it is horizontal */
+  justify-content: flex-end;
+}
+
+/* flex-start flex-end center space-around space-between space-evenly */
+.home {
+  margin-right: auto;
 }
