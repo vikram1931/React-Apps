@@ -60,7 +60,7 @@ export default function HostVanDetail() {
             Photos
           </NavLink>
         </nav>
-        <Outlet context={[vanDetail, setVanDetail]} />
+        <Outlet context={{ vanDetail }} />
         {/* how can we pass the fetched data to the children?
         
          (details linkpage, pricing link page,photos link page
