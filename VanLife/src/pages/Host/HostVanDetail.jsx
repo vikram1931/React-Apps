@@ -44,7 +44,7 @@ export default function HostVanDetail() {
         </div>
         <nav className="host-van-detail-nav">
           <NavLink
-            to={`/host/vans/${params.id}`}
+            /* to={`/host/vans/${params.id}`}*/ to="." /*  here . represents current path*/
             end
             style={({ isActive }) => (isActive ? activeStyle : null)}>
             Details
