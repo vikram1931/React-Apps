@@ -21,8 +21,9 @@ export default function HostVanDetail() {
 
       {vanDetail ? (
         <div>
-          <img alt=" " src={vanDetail[0].imageUrl} />
-          <h1>`${vanDetail[0].price}`</h1>{" "}
+          <img alt=" " src={vanDetail[0].imageUrl} width={150} />
+          <h1>{`${vanDetail[0].name}`}</h1> <p>${vanDetail[0].price}</p>
+          <p>{vanDetail[0].type}</p>
         </div>
       ) : (
         <h1>loading ....</h1>
