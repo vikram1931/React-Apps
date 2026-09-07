@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Link, NavLink, Outlet } from "react-router-dom";
 
 export default function HostVanDetail() {
   const params = useParams();
@@ -19,6 +19,12 @@ export default function HostVanDetail() {
   if (!vanDetail) {
     return <h1>Loading .....</h1>;
   }
+
+  const activeStyle = {
+    fontWeight: "bold",
+    textDecoration: "underline",
+    color: "red",
+  };
   return (
     <section>
       <Link to=".." className="back-button" relative="path">
@@ -36,10 +42,24 @@ export default function HostVanDetail() {
             <h4>${vanDetail.price}/day</h4>
           </div>
         </div>
-
-        <Link to={`/host/vans/${params.id}`}>Details</Link>
-        <Link to="pricing">Pricing</Link>
-        <Link to="photos">Photos</Link>
+        <nav className="host-van-detail-nav">
+          <NavLink
+            to={`/host/vans/${params.id}`}
+            end
+            style={({ isActive }) => (isActive ? activeStyle : null)}>
+            Details
+          </NavLink>
+          <NavLink
+            to="pricing"
+            style={({ isActive }) => (isActive ? activeStyle : null)}>
+            Pricing
+          </NavLink>
+          <NavLink
+            to="photos"
+            style={({ isActive }) => (isActive ? activeStyle : null)}>
+            Photos
+          </NavLink>
+        </nav>
         <Outlet />
       </div>
     </section>
