@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 
 export default function HostVanDetail() {
   const params = useParams();
@@ -10,8 +10,8 @@ export default function HostVanDetail() {
     fetch(`/api/host/vans/${params.id}`)
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
-        setVanDetail(json.vans); //here vans is an array
+        console.log(json.vans[0]);
+        setVanDetail(json.vans[0]); // //here vans is an array
       });
   }, [params.id]);
   // console.log(vanDetail);
@@ -27,15 +27,20 @@ export default function HostVanDetail() {
 
       <div className="host-van-detail-layout-container">
         <div className="host-van-detail">
-          <img alt="" src={vanDetail[0].imageUrl} />
+          <img alt="" src={vanDetail.imageUrl} />
           <div className="host-van-detail-info-text">
-            <i className={`van-type van-type-${vanDetail[0].type}`}>
-              {vanDetail[0].type}
+            <i className={`van-type van-type-${vanDetail.type}`}>
+              {vanDetail.type}
             </i>
-            <h3>{vanDetail[0].name}</h3>
-            <h4>${vanDetail[0].price}/day</h4>
+            <h3>{vanDetail.name}</h3>
+            <h4>${vanDetail.price}/day</h4>
           </div>
         </div>
+
+        <Link to={`/host/vans/${params.id}`}>Details</Link>
+        <Link to="pricing">Pricing</Link>
+        <Link to="photos">Photos</Link>
+        <Outlet />
       </div>
     </section>
   );
