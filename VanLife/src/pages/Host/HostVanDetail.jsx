@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 export default function HostVanDetail() {
   const params = useParams();
@@ -15,19 +15,28 @@ export default function HostVanDetail() {
       });
   }, [params.id]);
   // console.log(vanDetail);
-  return (
-    <div>
-      <h1>Host van detail page </h1>
 
-      {vanDetail ? (
-        <div>
-          <img alt=" " src={vanDetail[0].imageUrl} width={150} />
-          <h1>{`${vanDetail[0].name}`}</h1> <p>${vanDetail[0].price}</p>
-          <p>{vanDetail[0].type}</p>
+  if (!vanDetail) {
+    return <h1>Loading .....</h1>;
+  }
+  return (
+    <section>
+      <Link to=".." className="back-button" relative="path">
+        &larr; <span>Back to all vans</span>
+      </Link>
+
+      <div className="host-van-detail-layout-container">
+        <div className="host-van-detail">
+          <img alt="" src={vanDetail[0].imageUrl} />
+          <div className="host-van-detail-info-text">
+            <i className={`van-type van-type-${vanDetail[0].type}`}>
+              {vanDetail[0].type}
+            </i>
+            <h3>{vanDetail[0].name}</h3>
+            <h4>${vanDetail[0].price}/day</h4>
+          </div>
         </div>
-      ) : (
-        <h1>loading ....</h1>
-      )}
-    </div>
+      </div>
+    </section>
   );
 }
