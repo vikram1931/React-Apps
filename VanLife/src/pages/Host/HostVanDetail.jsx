@@ -60,7 +60,15 @@ export default function HostVanDetail() {
             Photos
           </NavLink>
         </nav>
-        <Outlet />
+        <Outlet context={[vanDetail, setVanDetail]} />
+        {/* how can we pass the fetched data to the children?
+        
+         (details linkpage, pricing link page,photos link page
+         
+         solution: we can use Outlet context to pass the state as props 
+
+         we have to import these props using useOutletContext from react-router
+         */}
       </div>
     </section>
   );

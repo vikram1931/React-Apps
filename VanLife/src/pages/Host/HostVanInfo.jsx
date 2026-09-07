@@ -1,5 +1,7 @@
 import React from "react";
-
+import { useOutletContext } from "react-router-dom";
 export default function HostVanInfo() {
-  return <h1> host van info is here</h1>;
+  const [vanDetail, setVanDetail] = useOutletContext();
+
+  return <h1> {vanDetail.description}</h1>;
 }
