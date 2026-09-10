@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 export default function VanDetail() {
   const params = useParams();
@@ -14,6 +14,9 @@ export default function VanDetail() {
 
   return (
     <div className="van-detail-container">
+      <Link to=".." relative="path" className="back-button">
+        <span>Back to all vans</span>
+      </Link>
       {van ? (
         <div className="van-detail">
           <img src={van.imageUrl} alt="" />
