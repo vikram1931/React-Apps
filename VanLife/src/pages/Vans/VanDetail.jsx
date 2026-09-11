@@ -5,11 +5,15 @@ export default function VanDetail() {
   const params = useParams();
   const location = useLocation();
   console.log(location);
-  const searchState = location.state?.search;
-  // useParams brought the id from the route
   const [van, setVan] = React.useState(null);
+  /* const params = new URLSearchParams(location.search);
+  const buttonName = params.get("type")*/ // to change the button name dynamically we can do this as well
+  const searchState = location.state?.search || "";
+
+  const type = location.state?.type || "all";
+
   useEffect(() => {
-    fetch(`/api/vans/${params.id}`)
+    fetch(`/api/vans/${params.id}`) // useParams brought the id from the route
       .then((response) => response.json())
       .then((json) => setVan(json.vans));
   }, [params.id]);
@@ -17,7 +21,7 @@ export default function VanDetail() {
   return (
     <div className="van-detail-container">
       <Link to={`..${searchState}`} relative="path" className="back-button">
-        <span>Back to all vans</span>
+        <span>Back to {type} vans</span>
       </Link>
       {van ? (
         <div className="van-detail">
