@@ -10,6 +10,7 @@ export default function Login() {
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,8 +18,9 @@ export default function Login() {
 
     loginUser(loginFormData)
       .then((data) => {
-        console.log(data);
         setError(null);
+        localStorage.setItem("loggedin", true);
+        navigate("/host");
       })
       .catch((err) => {
         setError(err);
